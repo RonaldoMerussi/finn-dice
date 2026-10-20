@@ -1,8 +1,8 @@
 {
   "id": "finn-dice",
   "title": "Finn Saltão: Dados Orelha-de-Prata (Dice So Nice)",
-  "description": "Sistema de dados customizado para o Dice So Nice: d20 com faces de engrenagem e símbolos do Finn \"Orelha-de-Prata\" Saltão (corda partida no 1, alaúde no 20).",
-  "version": "0.1.0",
+  "description": "Kit completo de dados customizados para o Dice So Nice (d4, d6, d8, d10, d12, d20 e d100) com o tema do Finn \"Orelha-de-Prata\" Saltão: engrenagens, corda partida no 1 e alaúde no 20 do d20, dano de Bola de Fogo no d6 e Inspiração Bárdica no d8.",
+  "version": "0.2.0",
   "authors": [
     { "name": "Ronaldo Merussi Modesto" }
   ],
@@ -18,5 +18,5 @@
   "esmodules": ["scripts/finn-dice.js"],
   "url": "https://github.com/RonaldoMerussi/finn-dice",
   "manifest": "https://github.com/RonaldoMerussi/finn-dice/releases/latest/download/module.json",
-  "download": "https://github.com/RonaldoMerussi/finn-dice/releases/download/v0.1.0/finn-dice.zip"
+  "download": "https://github.com/RonaldoMerussi/finn-dice/releases/download/v0.2.0/finn-dice.zip"
 }

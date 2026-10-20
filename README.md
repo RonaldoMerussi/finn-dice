@@ -1,8 +1,9 @@
 # Finn Saltão: Dados Orelha-de-Prata (Dice So Nice)
 
-Módulo do [Foundry VTT](https://foundryvtt.com/) que adiciona um sistema de dados customizado para o
-[Dice So Nice!](https://foundryvtt.com/packages/dice-so-nice): um d20 com faces de engrenagem e os
-símbolos do Finn "Orelha-de-Prata" Saltão (corda partida no 1, alaúde no 20).
+Módulo do [Foundry VTT](https://foundryvtt.com/) que adiciona o sistema de dados "Finn Saltão" para o
+[Dice So Nice!](https://foundryvtt.com/packages/dice-so-nice): um kit completo com d4, d6, d8, d10,
+d12, d20 e d100 no tema do Finn "Orelha-de-Prata" Saltão — engrenagens, corda partida no 1 e alaúde
+no 20 do d20, dano de Bola de Fogo no d6 e Inspiração Bárdica no d8.
 
 ## Dependências
 
@@ -21,11 +22,13 @@ esteja instalado e ativado no seu mundo do Foundry VTT.
 3. Clique em **Install**.
 4. Dentro do seu mundo, ative o módulo em **Game Settings > Manage Modules**, junto com o
    Dice So Nice!.
+5. Em **Configurações > Dice So Nice > Aparência**, escolha o sistema **"Finn Saltão"** na lista de
+   dados.
 
-## Regenerando as faces do dado
+## Regenerando as faces dos dados
 
-As texturas das faces do d20 (`assets/faces/*.png`) são geradas por um script Python com Pillow,
-disponível em [`tools/gen_faces.py`](tools/gen_faces.py).
+As texturas das faces (`assets/faces/*.png`, para d6/d8/d10/d12/d20/d100 — o d4 usa apenas texto) são
+geradas por um script Python com Pillow, disponível em [`tools/gen_faces.py`](tools/gen_faces.py).
 
 Para gerar novamente as faces:
 
@@ -34,14 +37,10 @@ pip install pillow
 python tools/gen_faces.py
 ```
 
-O layout visual de cada face (posição e tamanho da engrenagem) é controlado por duas constantes no
-topo do script:
-
-- `RING`: raio externo da engrenagem, em fração do lado da textura.
-- `CY`: centro vertical do conteúdo (0.0 = topo, 1.0 = base).
-
-Ajuste esses valores e rode o script novamente para regenerar o conjunto completo de PNGs em
-`assets/faces/`.
+O script aceita opcionalmente a pasta de saída como argumento (padrão `assets`). O layout visual de
+cada dado (raio da engrenagem e centro vertical do conteúdo) é controlado pelas chaves `ring` e `cy`
+de cada entrada do dicionário `DICE`, no topo do script. Ajuste esses valores por dado e rode o
+script novamente para regenerar o conjunto completo de PNGs em `assets/faces/`.
 
 ## Licença
 
