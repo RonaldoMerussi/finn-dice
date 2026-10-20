@@ -1,0 +1,42 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Compute version from tag
+        id: version
+        run: |
+          VERSION="${GITHUB_REF#refs/tags/v}"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Update module.json with release version and download URL
+        run: |
+          jq \
+            --arg version "${{ steps.version.outputs.version }}" \
+            --arg download "https://github.com/${{ github.repository }}/releases/download/${GITHUB_REF#refs/tags/}/finn-dice.zip" \
+            '.version = $version | .download = $download' \
+            module.json > module.json.tmp
+          mv module.json.tmp module.json
+
+      - name: Build finn-dice.zip
+        run: |
+          zip -r finn-dice.zip module.json scripts assets
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            module.json
+            finn-dice.zip
